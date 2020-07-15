@@ -5,7 +5,7 @@ import ProductsItem from "./ProductsItem";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const ProductItemsList = (props) => {
-  console.log(props);
+ // console.log(props);
   const products = useSelector((state) => state.products.availableProducts);
 
   // const Ondetailsscreen = (props) => {

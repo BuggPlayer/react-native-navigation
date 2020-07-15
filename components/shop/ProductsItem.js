@@ -8,15 +8,20 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Colors from "../../Constants/Colors";
-const ProductsItem = props => {
-  // console.log(props.add)
- // const onDetails = props => {
+const ProductsItem = (props) => {
+  //console.log(props)
+  // const onDetails = props => {
   ///  props.navigation.navigate("pd");
- // };
+  // };
 
   return (
-    <TouchableOpacity 
-   // onPress={props.details}
+    <TouchableOpacity
+      onPress={
+       // (props) => {
+       // props.navigation.navigate("details");
+    //  }
+    console.log(props.navigation)
+    }
     >
       <View style={styles.product}>
         <View>
@@ -41,7 +46,7 @@ const ProductsItem = props => {
               color={Colors.primary}
               style={{ borderRadius: 20 }}
               title="Cart"
-            //  onPress={onDetails}
+              //  onPress={onDetails}
             />
           </View>
         </View>
