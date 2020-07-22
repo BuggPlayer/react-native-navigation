@@ -1,7 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet, Button, Image } from "react-native";
+import { useSelector } from "react-redux";
 
 const ProductsDetailItem = (props) => {
+  const productId = props.navigation.getParam("productId");
+  const seletedProduct =useSelector( state=>state.products.availableProducts.find(prod=>prod.id===productId))
   return (
     <View style={styles.card}>
       <View>
@@ -14,8 +17,10 @@ const ProductsDetailItem = (props) => {
         />
       </View>
       <View style={styles.smallcontainer}>
-        <Text style={styles.title}>Fresh and maha Fresh</Text>
-        <Text style={styles.description}>Descriptipn:qweer rrtryr r ehheret  ergrgfr efh </Text>
+        <Text style={styles.title}>{seletedProduct.title}</Text>
+        <Text style={styles.description}>
+          Descriptipn:qweer rrtryr r ehheret ergrgfr efh{" "}
+        </Text>
         <Text style={styles.mrp}>MRP:300</Text>
         <Text style={styles.rs}>Rs:123</Text>
         <Text style={styles.save}>Saving:null </Text>
@@ -31,7 +36,7 @@ const styles = StyleSheet.create({
   card: {
     flex: 1,
     height: "auto",
-    maxWidth:500,
+    maxWidth: 500,
     display: "flex",
     //flexDirection: "row",
     justifyContent: "flex-start",
@@ -40,7 +45,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 20,
     margin: 5,
-    marginRight:10,
+    marginRight: 10,
   },
 
   image: {
@@ -69,15 +74,12 @@ const styles = StyleSheet.create({
     marginTop: 350,
     position: "absolute",
   },
-  description: {
-   
-  },
+  description: {},
   title: {
-    color:"green",
-    fontSize:18,
-    fontWeight:"bold",
-    textAlign: 'center',
-    
+    color: "green",
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
 export default ProductsDetailItem;

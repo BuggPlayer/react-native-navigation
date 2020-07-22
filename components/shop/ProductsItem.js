@@ -8,21 +8,14 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Colors from "../../Constants/Colors";
+import { useDispatch } from "react-redux";
+import AppButton from "../Buttons/AppButton";
+
 const ProductsItem = (props) => {
-  //console.log(props)
-  // const onDetails = props => {
-  ///  props.navigation.navigate("pd");
-  // };
+  // const dispatch = useDispatch();
 
   return (
-    <TouchableOpacity
-      onPress={
-       // (props) => {
-       // props.navigation.navigate("details");
-    //  }
-    console.log(props.navigation)
-    }
-    >
+    <TouchableOpacity onPress={props.dtaisl}>
       <View style={styles.product}>
         <View>
           <Image
@@ -42,12 +35,7 @@ const ProductsItem = (props) => {
           </Text>
           <Text>₹: {props.price}</Text>
           <View style={styles.btnaddtocart}>
-            <Button
-              color={Colors.primary}
-              style={{ borderRadius: 20 }}
-              title="Cart"
-              //  onPress={onDetails}
-            />
+            <AppButton title="Cart" onPress={props.onAddToCart} />
           </View>
         </View>
       </View>
@@ -57,6 +45,12 @@ const ProductsItem = (props) => {
 
 const styles = StyleSheet.create({
   product: {
+    shadowColor: "black",
+    shadowOpacity: 0.26,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 8,
+    elevation: 5,
+    borderRadius: 10,
     flex: 1,
     height: "60%",
     display: "flex",

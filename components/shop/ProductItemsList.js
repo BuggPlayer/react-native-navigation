@@ -1,17 +1,13 @@
 import React from "react";
 import { FlatList } from "react-native";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ProductsItem from "./ProductsItem";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import * as cartAction from "../../stored/actions/Cart";
 
 const ProductItemsList = (props) => {
- // console.log(props);
   const products = useSelector((state) => state.products.availableProducts);
 
-  // const Ondetailsscreen = (props) => {
-
-  //console.log(props.navigation)
-  //};
+  const dispatch = useDispatch();
   return (
     <FlatList
       data={products}
@@ -23,9 +19,10 @@ const ProductItemsList = (props) => {
           kg={itemData.item.kg}
           mrp={itemData.item.cutprice}
           price={itemData.item.price}
-          // add={() => {
-          //   props.navigation.navigate({ routename: "Productdetail" });
-          // }}
+          dtaisl={props.details}
+          onAddToCart={() => {
+            dispatch(cartAction.addToCart(itemData.item));
+          }}
         />
       )}
     />

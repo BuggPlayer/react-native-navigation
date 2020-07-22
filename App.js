@@ -1,21 +1,23 @@
 import React from "react";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
-
 import { StyleSheet, Text, View } from "react-native";
 import ShopNavigation from "./navigation/ShopNavigation";
 import productsReducer from "./stored/reduccers/products";
 import topCategoryReducer from "./stored/reduccers/TopCategoryReducer";
 //import ShopNavigator from "./navigation/ShopNavigator";
 import Topscrollprodutcs from "./stored/reduccers/TopScrollProductsReducers";
+import { composeWithDevTools } from "redux-devtools-extension";
+import cartReducer from "./stored/reduccers/Cart";
 
 const rootReducers = combineReducers({
   products: productsReducer,
+  cart:cartReducer,
   topCategory: topCategoryReducer,
   topscrollprodutcs: Topscrollprodutcs,
 });
 
-const store = createStore(rootReducers);
+const store = createStore(rootReducers, composeWithDevTools());
 
 export default function App() {
   return (

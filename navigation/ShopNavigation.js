@@ -33,6 +33,7 @@ const ProductsNavigator = createStackNavigator(
     },
     Productdetail: { screen: Productdetails },
     details: ProductsItems,
+    Cart: CartScreen,
     
   },
   {
@@ -53,7 +54,7 @@ const ShopNavigator = createDrawerNavigator(
     Products: ProductsNavigator,
     //  Orders: OrdersNavigator,
     //  Admin: AdminNavigator,
-    Cart: CartScreen,
+   
   },
   {
     contentOptions: {

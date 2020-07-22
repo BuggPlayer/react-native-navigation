@@ -4,7 +4,7 @@ import {  StyleSheet,ScrollView } from "react-native";
 import ProductsDetailItem from "../../components/shop/ProductsDetailItem";
 
 const ProductDetailsScreen = props => {
- // console.log(props)
+ 
   return (
   <ScrollView>
     <ProductsDetailItem />

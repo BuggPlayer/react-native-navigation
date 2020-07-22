@@ -8,6 +8,7 @@ import {
   Button,
 } from "react-native";
 import Colors from "../../Constants/Colors";
+import AppButton from "../Buttons/AppButton";
 
 const HorizontalProductsItem = (props) => {
   return (
@@ -33,7 +34,7 @@ const HorizontalProductsItem = (props) => {
             </Text>
             <Text>₹: {props.price}</Text>
             <View style={styles.btnaddtocart}>
-              <Button color={Colors.primary} title="Add to Cart" />
+              <AppButton  title="Order Now" onPress={props.orderNow} />
             </View>
           </View>
         </TouchableOpacity>
