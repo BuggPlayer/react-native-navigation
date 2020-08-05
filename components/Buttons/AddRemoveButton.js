@@ -10,6 +10,8 @@ const AddRemoveButton = props => {
       title={props.title}
       onPress={props.onPress}
       titleStyle={styles.titleStyle}
+      disabled={props.disabled}
+     
     />
   );
 };

@@ -2,9 +2,12 @@ import React from "react";
 import { View, TouchableOpacity, Text, Image, StyleSheet } from "react-native";
 
 const CategoryItem = (props) => {
+  //console.log("props hai", props.navigation);
   return (
     <View style={styles.root}>
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => props.navigation.navigate("HomCategory")}
+      >
         <Image style={styles.foodImage} source={{ uri: props.image }} />
       </TouchableOpacity>
       <Text style={styles.title}>{props.TopCategoryTitle}</Text>

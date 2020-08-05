@@ -9,12 +9,18 @@ import { Item, HeaderButtons } from "react-navigation-header-buttons";
 import HeaderBottn from "../../components/UI/HeaderBottn";
 
 const HomeScreen = (props) => {
+  //console.log(props)
   const details = () => {
-    props.navigation.navigate("Productdetail", { productId: itemData.item.id});
+    props.navigation.navigate(
+      "Productdetail"
+      //   ,
+      //  { productId: itemData.item.id}
+    );
   };
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
+     
       <TopCategoryList style={styles.topCategory} />
       <TopScrollProductsList />
       <HorizontalProductsList />
@@ -32,6 +38,17 @@ HomeScreen.navigationOptions = (navData) => {
           iconName={Platform.OS === "android" ? "md-cart" : "iso-cart "}
           onPress={() => {
             navData.navigation.navigate("Cart");
+          }}
+        />
+      </HeaderButtons>
+    ),
+    headerLeft: () => (
+      <HeaderButtons HeaderButtonComponent={HeaderBottn}>
+        <Item
+          title="Menu"
+          iconName={Platform.OS === "android" ? "md-menu" : "iso-menu "}
+          onPress={() => {
+            navData.navigation.toggleDrawer();
           }}
         />
       </HeaderButtons>

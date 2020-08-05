@@ -1,5 +1,7 @@
 import { ADD_TO_CART, REMOVE_FROM_CART, ADD_ITEM_CART } from "../actions/Cart";
 import CartItem from "../../model/Cart-items";
+import { ADD_ORDER } from "../actions/orders";
+import { DELETE_PRODUCT } from "../actions/products";
 
 const initialState = {
   items: {},
@@ -13,6 +15,7 @@ export default (state = initialState, action) => {
       const prodPrice = addProduct.price;
       const prodTitle = addProduct.title;
       const prodimage = addProduct.imageUrl;
+      const outofstock = addProduct.outofstock;
 
       let updatedOrNewCartItem;
 
@@ -24,7 +27,8 @@ export default (state = initialState, action) => {
           prodPrice,
           prodTitle,
           state.items[addProduct.id].sum + prodPrice,
-          prodimage
+          prodimage,
+          outofstock
         );
       } else {
         updatedOrNewCartItem = new CartItem(
@@ -32,7 +36,8 @@ export default (state = initialState, action) => {
           prodPrice,
           prodTitle,
           prodPrice,
-          prodimage
+          prodimage,
+          outofstock
         );
       }
       return {
@@ -51,7 +56,8 @@ export default (state = initialState, action) => {
           selectedCartItem.productPrice,
           selectedCartItem.productTitle,
           selectedCartItem.sum - selectedCartItem.productPrice,
-          selectedCartItem.imageURL
+          selectedCartItem.imageURL,
+          selectedCartItem.outofstock
         );
         updatedCartItems = { ...state.items, [action.pid]: updatedCartItem };
       } else {
@@ -64,31 +70,48 @@ export default (state = initialState, action) => {
         totalAmount: state.totalAmount - selectedCartItem.productPrice,
       };
 
-
-      case ADD_ITEM_CART:
-        const addselectedCartItem = state.items[action.addid];
-        const addcurrentQty = addselectedCartItem.quantity;
-        let addupdatedCartItems;
-        if (addcurrentQty ) {
-          //need to reduce it ,not erase it
-          const updatedCartItem = new CartItem(
-            addselectedCartItem.quantity + 1,
-            addselectedCartItem.productPrice,
-            addselectedCartItem.productTitle,
-            addselectedCartItem.sum + addselectedCartItem.productPrice,
-            addselectedCartItem.imageURL
-          );
-          addupdatedCartItems = { ...state.items, [action.addid]: updatedCartItem };
-        } else {
-          addupdatedCartItems = { ...state.items };
-         //  updatedCartItems[action.pid];
-          
-        }
-        return {
-          ...state,
-          items: addupdatedCartItems,
-          totalAmount: state.totalAmount + addselectedCartItem.productPrice,
+    case ADD_ITEM_CART:
+      const addselectedCartItem = state.items[action.addid];
+      const addcurrentQty = addselectedCartItem.quantity;
+      let addupdatedCartItems;
+      if (addcurrentQty) {
+        //need to reduce it ,not erase it
+        const updatedCartItem = new CartItem(
+          addselectedCartItem.quantity + 1,
+          addselectedCartItem.productPrice,
+          addselectedCartItem.productTitle,
+          addselectedCartItem.sum + addselectedCartItem.productPrice,
+          addselectedCartItem.imageURL,
+          addselectedCartItem.outofstock
+        );
+        addupdatedCartItems = {
+          ...state.items,
+          [action.addid]: updatedCartItem,
         };
+      } else {
+        addupdatedCartItems = { ...state.items };
+        //  updatedCartItems[action.pid];
+      }
+      return {
+        ...state,
+        items: addupdatedCartItems,
+        totalAmount: state.totalAmount + addselectedCartItem.productPrice,
+      };
+    case ADD_ORDER:
+      return initialState;
+    case DELETE_PRODUCT:
+      if (state.items[action.pid]) {
+        return state;
+      }
+      const updatedItems = { ...state.items };
+      //const itemTotal = state.items[action.pid].sum;
+      //console.log(itemTotal)
+      delete updatedItems[action.pid];
+      return {
+        ...state,
+        items: updatedItems,
+        totalAmount: state.totalAmount,
+      };
   }
   return state;
 };

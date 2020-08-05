@@ -2,21 +2,25 @@ class Product {
   constructor(
     id,
     ownerId,
+   // category,
     title,
     imageUrl,
     description,
     price,
-    cutprice,
-    kg
+    mrp,
+    kg,
+    outofstock
   ) {
     this.id = id;
     this.ownerId = ownerId;
+   // this.category = category;
     this.title = title;
     this.imageUrl = imageUrl;
     this.description = description;
     this.price = price;
-    this.cutprice = cutprice;
+    this.mrp = mrp;
     this.kg = kg;
+    this.outofstock = outofstock;
   }
 }
 

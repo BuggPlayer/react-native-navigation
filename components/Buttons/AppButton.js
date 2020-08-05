@@ -5,10 +5,14 @@ import { Button } from "react-native-elements";
 const AppButton = (props) => {
   return (
     <Button
+  
+   disabled={props.disabled}
       type="clear"
-      buttonStyle={styles.button}
+      buttonStyle={{...styles.button,...props.style}}
       title={props.title}
       onPress={props.onPress}
+      //style={...style. ...props.button}
+      
       titleStyle={styles.titleStyle}
     />
   );
@@ -22,11 +26,11 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    width: 100,
-    height: 40,
+    width: 80,
+    height: 30,
     backgroundColor: "#f15b5d",
     alignSelf: "center",
-    borderRadius: 30,
+    borderRadius: 50,
   },
 });
 

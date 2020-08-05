@@ -1,22 +1,16 @@
 import React from "react";
-import {
-  Text,
-  View,
-  Image,
-  StyleSheet,
-  Button,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, Image, StyleSheet, TouchableOpacity } from "react-native";
 import Colors from "../../Constants/Colors";
-import { useDispatch } from "react-redux";
-import AppButton from "../Buttons/AppButton";
+import Card from "../UI/Card";
 
 const ProductsItem = (props) => {
   // const dispatch = useDispatch();
 
   return (
-    <TouchableOpacity onPress={props.dtaisl}>
-      <View style={styles.product}>
+    <TouchableOpacity 
+    //onPress={props.dtaisl}
+    >
+      <View style={{ ...styles.product, ...props.style }}>
         <View>
           <Image
             style={styles.image}
@@ -34,9 +28,7 @@ const ProductsItem = (props) => {
             MRP:{props.mrp}
           </Text>
           <Text>₹: {props.price}</Text>
-          <View style={styles.btnaddtocart}>
-            <AppButton title="Cart" onPress={props.onAddToCart} />
-          </View>
+          <View style={styles.btnaddtocart}>{props.children}</View>
         </View>
       </View>
     </TouchableOpacity>
@@ -51,13 +43,14 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 5,
     borderRadius: 10,
+    backgroundColor: "white",
     flex: 1,
-    height: "60%",
-    display: "flex",
+    height: "auto",
+     display: "flex",
     flexDirection: "row",
     justifyContent: "flex-start",
-    backgroundColor: "white",
-    borderColor: "#E5E5E5",
+
+    borderColor: "blue",
     borderWidth: 1,
     borderRadius: 10,
     margin: 5,
@@ -74,27 +67,27 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   imageContainer: {
-    width: "100%",
-    height: "60%",
+    //width: "100%",
+    //height: "60%",
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     overflow: "hidden",
   },
   image: {
     borderRadius: 10,
-    height: "80%",
+    height: 120,
     width: 125,
     backgroundColor: "red",
-    justifyContent: "center",
-    alignItems: "center",
-    alignContent: "center",
-    backgroundColor: "#581845",
+    //justifyContent: "",
+    //alignItems: "flex-start",
+    //alignContent: "center",
+    //backgroundColor: "#581845",
     marginTop: 15,
     marginLeft: 10,
   },
   details: {
-    flex: 1,
-    padding: 5,
+    //flex: 1,
+    padding: 0,
     justifyContent: "space-around",
   },
 
@@ -102,7 +95,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "500",
     width: "100%",
-    display: "flex",
+    //display: "flex",
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",
@@ -115,12 +108,12 @@ const styles = StyleSheet.create({
     color: "#888",
   },
   btnaddtocart: {
-    justifyContent: "center",
-    alignItems: "center",
-    alignContent: "center",
-    marginLeft: 100,
-    marginTop: 115,
-    position: "absolute",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+    //alignContent: "center",
+    bottom: 30,
+    paddingRight: 5
+    // position: "absolute",
   },
   text: {
     marginBottom: 10,

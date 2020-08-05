@@ -4,6 +4,7 @@ import CategoryItem from "./CategoryItem";
 import { useSelector } from "react-redux";
 
 const TopCategoryList = (props) => {
+ // console.log("heelo",props)
   const TopCategoryListData = useSelector(
     (state) => state.topCategory.availableCategoty
   );
@@ -17,11 +18,8 @@ const TopCategoryList = (props) => {
         <CategoryItem image={itemData.item.imageUrl}
         TopCategoryTitle={itemData.item.name} />
       )}
-      // keyExtractor={(item) => item.id}
     />
   );
 };
-
-//const styles = StyleSheet.create({});
 
 export default TopCategoryList;

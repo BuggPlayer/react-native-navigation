@@ -4,12 +4,14 @@ const PRODUCTS = [
   new Product(
     "p1",
     "u1",
+   // "veg",
     "Blue Carpet",
     "https://images.pexels.com/photos/6292/blue-pattern-texture-macro.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     "Fits your red shirt perfectly. To stand on. Not to wear it.",
     99.99,
     88.88,
-    10.99
+    10.99,
+    10,
   ),
   new Product(
     "p3",
@@ -19,7 +21,8 @@ const PRODUCTS = [
     "Can also be used for tea!",
     8.99,
     2.9,
-    2.0
+    2.0,
+    5
   ),
   new Product(
     "p4",

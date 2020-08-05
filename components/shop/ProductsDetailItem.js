@@ -3,8 +3,8 @@ import { View, Text, StyleSheet, Button, Image } from "react-native";
 import { useSelector } from "react-redux";
 
 const ProductsDetailItem = (props) => {
-  const productId = props.navigation.getParam("productId");
-  const seletedProduct =useSelector( state=>state.products.availableProducts.find(prod=>prod.id===productId))
+ // const productId = props.navigation.getParam("productId");
+ /// const seletedProduct =useSelector( state=>state.products.availableProducts.find(prod=>prod.id===productId))
   return (
     <View style={styles.card}>
       <View>
